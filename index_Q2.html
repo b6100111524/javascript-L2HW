@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+    function validate() {
+      var code = document.getElementById("nric").value;
+      if (code == "") {
+        alert("內容是空的，請填生份證字號！");
+      } else if (!isNaN(code)) {
+        alert("內容只有數字格式不符，發出警告！");
+      } else if (code.length != 10) {
+        alert("內容長度不符十位，發出警告！");
+      } else {
+        document.getElementById("result").innerHTML = "通過驗證";
+
+
+        if ( code.charAt(1) == 1) {
+          document.getElementById("boygirl").innerHTML = "男性";
+        } else if ( code.charAt(1) == 2) {
+          document.getElementById("boygirl").innerHTML = "女性";
+        }
+
+      }
+    }
+
+  </script>
+  <title></title>
+</head>
+<body>
+  <form>
+    <p>身分證 INPUT</p>
+    <input type="text" id="nric">
+    <input type="button" value="驗證" onclick="validate()">
+    <p id="result"></p>
+    <div class="div" id="boygirl"></div>
+  </form>
+
+
+</body>
+</html>

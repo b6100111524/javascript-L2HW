@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+
+    var state = true;
+    function toggleLight() {
+      var image = document.getElementById("image");
+      state = !state;
+      image.src = state ? "img/OFF.jpg" : "img/ON.jpg";
+    }
+    function countDownNumber() {
+      var num = document.getElementById("nric").value;
+      if (num == "") {
+        alert("內容是空的，請填數字！");
+      } else if (isNaN(num)) {
+        alert("內容必須是數字！");
+      } else {
+        document.getElementById("result").innerHTML = "通過驗證";
+        document.getElementById("timer").innerHTML = num;
+        
+        var timeLeft = num;
+        function countDownTimer() {
+          timeLeft = timeLeft - 1;
+          if (timeLeft <= 0) {
+            document.getElementById("image").src = "img/ON.jpg";
+            state = false;
+            clearInterval(id);
+          }
+          document.getElementById("timer").innerHTML = timeLeft;
+        }
+        var id = setInterval(countDownTimer, 1000);
+
+      }
+    }
+
+  </script>
+  <title></title>
+</head>
+<body>
+  <img id="image" src="img/OFF.jpg">
+  <button class="button" onclick="toggleLight();">O N | OFF</button>
+  <br>
+  <input type="text" id="nric">
+  <input type="button" value="驗證" onclick="countDownNumber()">
+  <p id="result"></p>
+  <div class="div" id="timer"></div>
+</body>
+</html>
